@@ -17,8 +17,7 @@ public class TelnetServer implements Runnable{
 			server = new ServerSocket(23);
 			Class.forName("uebung2.HtmlLogger");
 			HtmlLogger log = new HtmlLogger();
-			
-			
+
 			while(true){
 				Socket clientSocket = server.accept();
 				System.out.println("client socket initialized");
@@ -29,7 +28,6 @@ public class TelnetServer implements Runnable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
