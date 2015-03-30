@@ -16,6 +16,7 @@ public class ClientHandler implements Runnable{
 	 */
 	public ClientHandler(Socket clientSocket){
 		this.clientSocket = clientSocket;
+		run();
 	}
 	
 	/**
@@ -31,14 +32,16 @@ public class ClientHandler implements Runnable{
 			String output = "";
 			
 			while (true) {
+				HtmlLogger.write("Menüausgabe");
 				out.println(menu.printMenu());
 				input = in.readLine();
+				HtmlLogger.write("Benutzereingabe: " + input);
 				if (!input.equals("0")){
 					output = menu.auswahl(input);
-	            	out.println(output);
-	            	HtmlLogger.write(output);
+	            	out.println(HtmlLogger.write(output));
 	            }else{
-	            	out.println("Bye Bye");
+	            	out.println(HtmlLogger.write("Bye Bye"));
+	            	HtmlLogger.write("-------------------------------------------------------<br/>");
 					in.close();
 					out.close();
 					clientSocket.close();
