@@ -12,38 +12,33 @@ public class Aufgabe2 {
 	/**
 	 * Spricht das InetAddress Objekt über den Unix-DayTimeServer port an und gibt die Rückgabe als string zurück
 	 * 
-	 * time.fu-berlin.de 
-	 * zeit.fu-berlin.de
+	 * <strong>mögliche Daytimeserver</strong>
+	 * <li>time.fu-berlin.de</li>
+	 * <li>zeit.fu-berlin.de</li>
 	 * @param address
-	 * @return
+	 * @return - Die rückgabe des Servers
 	 */
 	public static String run(InetAddress address) {
 		int port = 13;
 		String result = "";
 		try {
 			Socket sock = new Socket(address, port);
-			
 			InputStream input = sock.getInputStream();
 			byte[] streamedBytes = new byte[100];
 			int length = 0;
-			while ((length = input.read(streamedBytes)) != -1) {
-			
-				
+			while ((length = input.read(streamedBytes)) != -1) {				
 				ByteArrayOutputStream baos = new ByteArrayOutputStream();
 				PrintStream ps = new PrintStream(baos);
 				ps.write(streamedBytes, 0, length);
 				result = baos.toString();
-				
 				System.out.write(streamedBytes, 0, length);
 			}
 			input.close();
 			sock.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			result = address.getHostAddress() + "ist kein Unix-Daytimeserver";
 		}
-		//TODO Fehler zurückgeben wenn angesprochener server kein zeitserver ist
 		return result;
-		
 	}
 }
