@@ -9,56 +9,55 @@ public class Aufgabe1 {
 
 	/**
 	 * Erzeugt ein InetAdress Objekt aus der eingegebenen URL
+	 * die eingegebene URL kann entweder direkt, oder auch als IP, eingegeben werden.
+	 * Es wird dann jeweils das pendand ausgegeben.
+	 * 
+	 * Ergo: bei einer eingegebene <strong>IP</strong> wird die <strong>Hostname</strong> und bei einer einem eingegebenen <strong>Hostname</strong> die <strong>IP</strong> ausgegeben.
 	 * 
 	 * @param out
 	 * @param in
-	 * @return Objekt aus der eingegebenen URL
+	 * @return Objekt aus der eingegebenen URL zur weiterverarbeitung
 	 */
 	static public InetAddress run(PrintWriter out , BufferedReader in){
-		out.println("Geben sie eine URL an (ohne http://): ");
-		String url;
-		try {
-			url = in.readLine();
-			
-			url = url.replaceAll("\b", "");
-			boolean isIP = false;
-			byte[] ipV4Adress = new byte[4];
+		boolean wasError = false;
+		do{
+			out.println(HtmlLogger.write("Geben sie eine URL an (ohne http://): "));
+			String url;
 			try {
+				url = in.readLine();
+				url = url.replaceAll("\b", "");
+				HtmlLogger.write("Benutzereingabe: " + url);
+				boolean isIP = false;
+				byte[] ipV4Adress = new byte[4];
+				try {
+					isIP = (Long.valueOf(url.replace(String.valueOf('.'), "")) != 0)? true: false;
+					String temp = url;
+					int stelle = 0;
+					int i = 0;
+					do{
+						ipV4Adress[i] = Integer.valueOf(temp.substring(0, ((stelle = temp.indexOf("."))<0)?temp.length():stelle )).byteValue();
+						temp = temp.substring(stelle+1);
+						System.out.println(temp);
+						i++;
+					}while(i<=3);	
+				}catch (NumberFormatException e) {
+					
+				}
+				InetAddress adresse = (isIP)?InetAddress.getByAddress(ipV4Adress):InetAddress.getByName(url);
 				
-				isIP = (Long.valueOf(url.replace(String.valueOf('.'), "")) != 0)? true: false;
-				String temp = url;
-				int stelle = 0;
-				int i = 0;
-				do{
-				
-					ipV4Adress[i] = Integer.valueOf(temp.substring(0, ((stelle = temp.indexOf("."))<0)?temp.length():stelle )).byteValue();
-					temp = temp.substring(stelle+1);
-					System.out.println(temp);
-					i++;
-				}while(i<=3);
-				
-			} catch (NumberFormatException e) {
-				
+				if(isIP){
+					url += " : "  + adresse.getHostName();
+				}else{
+					url += " : "  + adresse.getHostAddress();
+				}
+				out.println("\n\r" + HtmlLogger.write(url));
+				return adresse;
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				wasError = true;
 			}
-			
-			
-			InetAddress adresse = (isIP)?InetAddress.getByAddress(ipV4Adress):InetAddress.getByName(url);
-			
-			if(isIP){
-				url += " : "  + adresse.getHostName();
-			}else{
-				url += " : "  + adresse.getHostAddress();
-			}
-			
-			out.println("\n\r" + url);
-			
-			return adresse;
-		
-		} catch (IOException e1) {
-			e1.printStackTrace();
-			return null;
-		}
-		
+		}while(wasError);
+		return null;	
 	}
 	
 }
