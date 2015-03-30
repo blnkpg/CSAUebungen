@@ -11,7 +11,6 @@ public class Main {
 	 * @author Christopher Lucas
 	 */
 	public static void main(String[] args) {
-		int auswahl = 2;
 		
 		ExecutorService threadPool = Executors.newFixedThreadPool(2);
 				threadPool.submit(new TelnetServer());
