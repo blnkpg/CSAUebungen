@@ -11,7 +11,6 @@ import java.util.LinkedList;
 
 import org.apache.commons.net.ntp.TimeStamp;
 
-import com.sun.java_cup.internal.runtime.Scanner;
 
 public class HtmlLogger extends Thread {
 	
@@ -22,9 +21,9 @@ public class HtmlLogger extends Thread {
 			run();
 		}
 		
-		public static void write(String entry){
+		public static String write(String entry){
 			if (!index.canRead() || !index.canWrite()){
-				return;
+				return entry;
 			}
 			try {
 				BufferedReader reader = new BufferedReader(new FileReader(index));
@@ -32,7 +31,7 @@ public class HtmlLogger extends Thread {
 				String line = null;
 				while( (line = reader.readLine()) != null ){
 					if(line.contains("</body>")){
-						lines.add(getTime() + entry);
+						lines.add(getTime() + entry + "<br/>");
 						lines.add(line);
 					}else{
 						lines.add(line);
@@ -58,7 +57,7 @@ public class HtmlLogger extends Thread {
 				e.printStackTrace();
 			}
 			
-			
+			return entry;
 		}
 
 		
