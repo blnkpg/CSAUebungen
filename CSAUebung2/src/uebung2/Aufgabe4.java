@@ -13,8 +13,9 @@ public class Aufgabe4 {
 	/**
 	 * Gibt die Index.html des übergebenen InetAddress als string zurück
 	 * 
+	 * 
 	 * @param address
-	 * @return
+	 * @return - HTML Code 
 	 */
 	public static String run(InetAddress address ) {
 		int port = 80;
@@ -45,7 +46,6 @@ public class Aufgabe4 {
 			out.close();
 			sock.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;
