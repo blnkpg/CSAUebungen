@@ -10,7 +10,7 @@ public class JDBCUebungen {
 		
 		switch (benutzereingabe.nextInt()) {
 		case 1:
-			
+			 
 			break;
 		case 2:
 			

@@ -14,7 +14,7 @@ public class Futter {
 	 * @param name
 	 */
 	public Futter(int fID, double nutrition, String color, String name) {
-		this.fID = fID;
+		this.fID = fID; 
 		this.nutrition = nutrition;
 		this.color = color;
 		this.name = name;

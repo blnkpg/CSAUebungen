@@ -41,7 +41,7 @@ public class Tier {
 		this.weight = weight;
 	}
 	public double getHeight() {
-		return height;
+		return height; 
 	}
 	public void setHeight(double height) {
 		this.height = height;

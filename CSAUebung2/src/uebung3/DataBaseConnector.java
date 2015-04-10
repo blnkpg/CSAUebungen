@@ -45,7 +45,7 @@ public class DataBaseConnector {
 	
 	public void futteranzeigen(){
 		sendStatement("SELECT * FROM Futter");
-	}
+	} 
 	
 	/**
 	 * Führt die entsprechende 
