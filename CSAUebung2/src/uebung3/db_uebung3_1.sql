@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 10. Apr 2015 um 12:37
+-- Erstellungszeit: 10. Apr 2015 um 12:43
 -- Server Version: 5.6.21
 -- PHP-Version: 5.6.3
 
@@ -29,7 +29,7 @@ USE `db_uebung3.1`;
 --
 
 CREATE TABLE IF NOT EXISTS `futter` (
-  `FID` int(10) NOT NULL,
+`FID` int(10) NOT NULL,
   `name` varchar(30) NOT NULL,
   `color` varchar(6) NOT NULL,
   `nutrition` double NOT NULL
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `futter` (
 --
 
 CREATE TABLE IF NOT EXISTS `tier` (
-  `TID` int(10) NOT NULL,
+`TID` int(10) NOT NULL,
   `name` varchar(30) NOT NULL,
   `weight` double NOT NULL,
   `height` double NOT NULL
@@ -82,6 +82,20 @@ ALTER TABLE `tier`
 ALTER TABLE `tierfutter`
  ADD PRIMARY KEY (`FID`,`TID`);
 
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `futter`
+--
+ALTER TABLE `futter`
+MODIFY `FID` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT für Tabelle `tier`
+--
+ALTER TABLE `tier`
+MODIFY `TID` int(10) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
