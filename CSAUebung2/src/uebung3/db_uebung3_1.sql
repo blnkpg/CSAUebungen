@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Datenbank: `db_uebung3.1`
+-- Datenbank: `db_uebung3-1`
 --
 CREATE DATABASE IF NOT EXISTS `db_uebung3-1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `db_uebung3-1`;
