@@ -2,6 +2,7 @@ package uebung3;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -24,7 +25,9 @@ public class DataBaseConnector {
 	
 	public void sendStatement(String sqlStatement ){
 		try {
-			this.statement.executeQuery(sqlStatement);
+			ResultSet rueckgabe = this.statement.executeQuery(sqlStatement);
+			
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,10 +36,13 @@ public class DataBaseConnector {
 	
 	public void sendUpdateStatement(String sqlstatement){
 		try {
+//			TODO durch richtigen SQL Befehl erstzen
 			this.statement.executeUpdate("INSERT INTO country VALUES ('Bulgaria','Leva')");
 		} catch (Exception e) {
 			
 		}
 	}
-		
+	
+	
+	
 }
