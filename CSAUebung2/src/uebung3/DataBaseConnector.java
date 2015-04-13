@@ -17,21 +17,23 @@ public class DataBaseConnector {
 			try {
 				this.connection = DriverManager.getConnection("jdbc:mysql://localhost/db_uebung3.1", "mysqluser" , "mysqluser" );
 				this.statement = connection.createStatement();
+				System.out.println("I'm connected... yess....");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
 	}
 	
-	public void sendStatement(String sqlStatement ){
+	public ResultSet sendStatement(String sqlStatement ){
 		try {
 			ResultSet rueckgabe = this.statement.executeQuery(sqlStatement);
-			
+			return rueckgabe;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return null;
 	}
 	
 	public void sendUpdateStatement(String sqlstatement){
