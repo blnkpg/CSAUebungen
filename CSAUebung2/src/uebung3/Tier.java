@@ -51,4 +51,12 @@ public class Tier {
 	public void setHappa(LinkedList<Futter> happa) {
 		this.happa = happa;
 	}
+	
+	@Override
+	public String toString(){
+		return  "ID : "		+ this.gettID()		+ "\n" +
+				"Name: "	+ this.getName() 	+ "\n" +
+				"Groesse"	+ this.height		+ "\n" +
+				"Gewicht"	+ this.getWeight() 	+ "\n";
+	}
 }

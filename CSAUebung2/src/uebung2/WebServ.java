@@ -37,14 +37,18 @@ public class WebServ implements Runnable{
       System.out.println("Listening to port " + port);
       int calls = 0;
       ServerSocket httpd = new ServerSocket(port);
-      while (true) {
+      
+      while (httpd.isBound()) {
         Socket socket = httpd.accept();
         Class.forName("uebung2.BrowserClientThread");
 //        (new BrowserClientThread(++calls, socket)).start();
         (new BrowserClientThread(++calls, socket)).run();
       }
+    
+      httpd.close();
     } catch (IOException | ClassNotFoundException e) {
       System.err.println(e.toString());
+    
       System.exit(1);
     }
   }

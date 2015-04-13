@@ -22,7 +22,7 @@ public class ClientHandler implements Runnable{
 	/**
 	 * Schreibt ddie Menüs und und leitet Benutzereingaben für die weitere verarbeitung weiter
 	 */
-	@SuppressWarnings("null")
+	
 	public void run(){
 		try {
 			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);

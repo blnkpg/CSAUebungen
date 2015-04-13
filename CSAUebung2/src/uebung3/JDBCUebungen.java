@@ -1,15 +1,17 @@
 package uebung3;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class JDBCUebungen {
 
 	private static Scanner benutzereingabe = new Scanner(System.in);
+	private static DatabaseService service = new DatabaseService();
 	
 	public static void main(String[] args) {
 		
 		Boolean exit = false;
-		DatabaseService service = new DatabaseService();
+		
 		
 		System.out.println(	"[1] Tiere Verwalten"
 							+ "\n[2] Futter verwalten"
@@ -29,16 +31,22 @@ public class JDBCUebungen {
 					
 					case 1:
 						System.out.println("Tier Anlegen:");
-						Tier neuesTier = new Tier(name, weight, height);
-						service.erzeugeTier(neuesTier);
-						
-						System.out.println();
+						service.erzeugeTier(editAnimal(null));						
+						break;
 						
 					case 2:
-						
+						System.out.println("Tier ausloeschen");
+//						TODO Tiere Anzeigen
+						deleteAnimal(name);
 						break;
+					
 					case 3:
+						System.out.println("Tier bearbeiten");
+//						TODO Tiere Anzeigen
+						break;
 						
+					case 4:
+						System.out.println("Tiere anzeigen");
 						break;
 						
 					default:
@@ -76,8 +84,9 @@ public class JDBCUebungen {
 	 */
 	private static void printMenu(String what){
 		System.out.println(		"[1] " + what + " anlegen \n"
-							+ 	"[2] " + what +  "ausloeschen \n "
-							+ 	"[3] " + what + "anzeigen");
+							+ 	"[2] " + what + " ausloeschen \n "
+							+	"[3]"  + what + " bearbeiten \n"
+							+ 	"[4] " + what + " anzeigen");
 		
 	}
 
@@ -115,6 +124,32 @@ public class JDBCUebungen {
 		return animal;
 	}
 	
+	private static void deleteAnimal(String name){
+		ArrayList<Tier> tiereMitDemNamen = service.searchAnimal("Name", name);
+		int id = 0;
+		if(tiereMitDemNamen.size()>1){
+			boolean istVorhanden = false;
+			do{
+				System.out.println("Mehrere Eintraege gefunden...");
+				for (Tier tier : tiereMitDemNamen) {
+					System.out.println(tier.toString() + "\n");
+				}
+				printErsteingabe("Bitte geben Sie die ID des Tieres ein");
+				id = benutzereingabe.nextInt();
+				for (Tier tier : tiereMitDemNamen) {
+					if(istVorhanden == false){
+						istVorhanden = (tier.gettID() == id);
+					}
+				}
+			}while(!istVorhanden);
+			
+			service.deleteAnimal(String.valueOf(id));
+		}
+		
+		
+		
+	}
+	
 	
 	private static String printErsteingabe(String what){
 		return  (what+ ": ");
@@ -123,4 +158,5 @@ public class JDBCUebungen {
 	private static String printChange(String what , String old){
 		return what + "(vorher: " + old +  ") : ";
 	}
+	
 }

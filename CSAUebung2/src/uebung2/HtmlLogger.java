@@ -16,11 +16,7 @@ public class HtmlLogger extends Thread {
 	
 		private static File index = new File("c:\\tmp\\test\\index.html");
 		
-		
-		public HtmlLogger(){
-			run();
-		}
-		
+				
 		public static String write(String entry){
 			if (!index.canRead() || !index.canWrite()){
 				return entry;
@@ -86,5 +82,11 @@ public class HtmlLogger extends Thread {
 			return new TimeStamp(new Date()).toDateString() + " : ";
 		}
 		
-		
+		public void dispose(){
+			try {
+				super.finalize();
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
+		}
 }

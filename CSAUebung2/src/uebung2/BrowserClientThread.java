@@ -29,7 +29,7 @@ class BrowserClientThread extends Thread{
   private InputStream  in;
   private String       cmd;
   private String       url;
-  private String       httpversion;
+//  private String	   httpversion;
 
   /**
    * Erzeugt einen neuen Client-Thread mit der angegebenen
@@ -63,11 +63,13 @@ class BrowserClientThread extends Thread{
   /**
    * Liest den nächsten HTTP-Request vom Browser ein.
    */
-  private void readRequest()
+  @SuppressWarnings("unchecked")
+private void readRequest()
   throws IOException
   {
     //Request-Zeilen lesen
-    Vector request = new Vector(10);
+    @SuppressWarnings("rawtypes")
+	Vector request = new Vector(10);
     StringBuffer sb = new StringBuffer(100);
     int c;
     while ((c = in.read()) != -1) {
@@ -85,7 +87,7 @@ class BrowserClientThread extends Thread{
       }
     }
     //Request-Zeilen auf der Konsole ausgeben
-    Enumeration e = request.elements();
+	Enumeration<StringBuffer> e = request.elements();
     while (e.hasMoreElements()) {
       sb = (StringBuffer)e.nextElement();
       System.out.println("< " + sb.toString());
@@ -97,7 +99,7 @@ class BrowserClientThread extends Thread{
     }
     cmd = "";
     url = "";
-    httpversion = "";
+//    httpversion = "";
     int pos = s.indexOf(' ');
     if (pos != -1) {
       cmd = s.substring(0, pos).toUpperCase();
@@ -110,9 +112,9 @@ class BrowserClientThread extends Thread{
         //HTTP-Version
         pos = s.indexOf('\r');
         if (pos != -1) {
-          httpversion = s.substring(0, pos);
+//          httpversion = s.substring(0, pos);
         } else {
-          httpversion = s;
+//          httpversion = s;
         }
       } else {
         url = s;

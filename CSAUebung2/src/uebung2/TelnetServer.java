@@ -18,18 +18,21 @@ public class TelnetServer implements Runnable{
 			Class.forName("uebung2.HtmlLogger");
 			HtmlLogger log = new HtmlLogger();
 
-			while(true){
+			while(server.isBound()){
 				Socket clientSocket = server.accept();
 				System.out.println("client socket initialized");
-				log.write(clientSocket.toString());
+				HtmlLogger.write(clientSocket.toString());
 				ClientHandler handler = new ClientHandler(clientSocket);
 				handler.run();				
-			}			
+			}		
+			
+			log.dispose();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		
 		
 	}
 	
