@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-
 public class DataBaseConnector {
 	
 	private Connection connection = null;
@@ -15,11 +13,11 @@ public class DataBaseConnector {
 	
 	public DataBaseConnector(){
 			try {
-				this.connection = DriverManager.getConnection("jdbc:mysql://localhost/db_uebung3.1", "mysqluser" , "mysqluser" );
+				DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+				this.connection = DriverManager.getConnection("jdbc:mysql://localhost/db_uebung3-1", "mysqluser" , "mysqluser" );
 				this.statement = connection.createStatement();
 				System.out.println("I'm connected... yess....");
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}	
 	}
@@ -30,7 +28,6 @@ public class DataBaseConnector {
 			return rueckgabe;
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
