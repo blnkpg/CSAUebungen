@@ -16,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
--- neuer DB NAME
+-- 
 -- Datenbank: `db_uebung3-1`
 --
 CREATE DATABASE IF NOT EXISTS `db_uebung3-1` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
