@@ -4,13 +4,19 @@ import java.util.ArrayList;
 
 public class AnimalService {
 
-	private static ArrayList<Tier> tiere = new ArrayList<Tier>();
-	private DataBaseConnector connector = null;
+	private static String sqlFetchAll = "SELECT * FROM tier";
 	
-	public AnimalService(DataBaseConnector connector){
-		this.connector = connector;
+	
+	private static ArrayList<Tier> tiere = new ArrayList<Tier>();
+	private DatabaseService service = null;
+	
+	public AnimalService(DatabaseService service){
+		this.service = service;
+		
 	}
 	
 	
-	
+	private void pullAnimalsFromDB(){
+		tiere.addAll();
+	}
 }

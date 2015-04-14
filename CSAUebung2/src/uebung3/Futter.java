@@ -13,7 +13,7 @@ public class Futter {
 	 * @param color
 	 * @param name
 	 */
-	public Futter(int fID, double nutrition, String color, String name) {
+	public Futter(int fID , String name, String color , double nutrition) {
 		this.fID = fID; 
 		this.nutrition = nutrition;
 		this.color = color;

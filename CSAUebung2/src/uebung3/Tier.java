@@ -21,6 +21,13 @@ public class Tier {
 		this.height = height;
 	}
 	
+	public Tier(int tID , String name , double weight , double height){
+		this.tID = tID;
+		this.name = name;
+		this.weight = weight;
+		this.height = height;
+	}
+	
 	public int gettID() {
 		return tID;
 	}
