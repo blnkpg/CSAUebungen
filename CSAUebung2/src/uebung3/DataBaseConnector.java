@@ -16,6 +16,7 @@ public class DataBaseConnector {
 				DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 				this.connection = DriverManager.getConnection("jdbc:mysql://localhost/db_uebung3-1", "mysqluser" , "mysqluser" );
 				this.statement = connection.createStatement();
+				
 				System.out.println("I'm connected... yess....");
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -35,10 +36,9 @@ public class DataBaseConnector {
 	
 	public void sendUpdateStatement(String sqlstatement){
 		try {
-//			TODO durch richtigen SQL Befehl erstzen
-			this.statement.executeUpdate("INSERT INTO country VALUES ('Bulgaria','Leva')");
-		} catch (Exception e) {
-			
+			this.statement.executeUpdate(sqlstatement);
+			} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	

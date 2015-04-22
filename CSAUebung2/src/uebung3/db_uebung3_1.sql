@@ -1,7 +1,6 @@
 -- phpMyAdmin SQL Dump
 -- version 4.2.11
 -- http://www.phpmyadmin.net
---
 -- Host: 127.0.0.1
 -- Erstellungszeit: 10. Apr 2015 um 12:43
 -- Server Version: 5.6.21
@@ -23,7 +22,6 @@ CREATE DATABASE IF NOT EXISTS `db_uebung3-1` DEFAULT CHARACTER SET latin1 COLLAT
 USE `db_uebung3-1`;
 
 -- --------------------------------------------------------
-
 --
 -- Tabellenstruktur für Tabelle `futter`
 --
@@ -36,7 +34,6 @@ CREATE TABLE IF NOT EXISTS `futter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
-
 --
 -- Tabellenstruktur für Tabelle `tier`
 --
@@ -85,7 +82,6 @@ ALTER TABLE `tierfutter`
 --
 -- AUTO_INCREMENT für exportierte Tabellen
 --
-
 --
 -- AUTO_INCREMENT für Tabelle `futter`
 --

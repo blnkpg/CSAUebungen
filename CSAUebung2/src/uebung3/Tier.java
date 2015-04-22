@@ -16,6 +16,7 @@ public class Tier {
 	 * @param height
 	 */
 	public Tier(String name , double weight , double height){
+		this.tID = 0;
 		this.name = name;
 		this.weight = weight;
 		this.height = height;
